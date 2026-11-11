@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101820">
+<title>FINANCE — Personal Finance</title>
+<style>
+:root{--bg:#0d151d;--panel:#15212b;--panel2:#1b2934;--gold:#c6a76a;--text:#f4f1e9;--muted:#9ba8b2;--green:#72d6ad;--red:#f19b9b;--line:#2b3944}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:760px;margin:auto;padding:20px 16px 100px}.top{display:flex;align-items:center;justify-content:space-between;margin:4px 0 24px}.brand{display:flex;align-items:center;gap:11px}.mark{width:39px;height:39px;border-radius:12px;background:var(--gold);color:#101820;display:grid;place-items:center;font:700 25px Georgia}.brand strong{letter-spacing:2px;font-size:17px}.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:1.5px;margin-top:3px}.eyebrow{color:var(--muted);font-size:11px;letter-spacing:1.5px;text-transform:uppercase}.hero{background:linear-gradient(135deg,#1b2a35,#121d26);border:1px solid #34424b;border-radius:22px;padding:21px;margin-bottom:15px}.balance{font-size:35px;font-weight:650;letter-spacing:-1px;margin:8px 0 18px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#ffffff08;border:1px solid #ffffff0c;border-radius:14px;padding:12px}.stat span{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}.stat b{font-size:17px}.green{color:var(--green)}.red{color:var(--red)}.section{margin-top:22px}.sectionhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.sectionhead h2{font-size:16px;margin:0;font-weight:650}.muted{color:var(--muted)}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:15px}.tabs{display:flex;gap:7px;overflow:auto;padding:2px 0 10px;margin-bottom:5px}.tab{border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 13px;border-radius:99px;white-space:nowrap;font-size:13px}.tab.active{background:var(--gold);border-color:var(--gold);color:#101820;font-weight:700}.primary{border:0;background:var(--gold);color:#101820;padding:11px 15px;border-radius:12px;font-weight:700}.secondary{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:10px 13px;border-radius:11px}.danger{border:1px solid #714747;background:#382326;color:#ffc2c2;padding:7px 10px;border-radius:9px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:var(--muted)}input,select{width:100%;background:#0f1921;border:1px solid var(--line);color:var(--text);padding:12px;border-radius:11px;min-width:0}input:focus,select:focus{outline:1px solid var(--gold);border-color:var(--gold)}.list{display:flex;flex-direction:column;gap:9px}.item{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}.itemtitle{font-weight:600}.itemsub{font-size:12px;color:var(--muted);margin-top:4px}.amount{font-weight:700;white-space:nowrap}.bar{height:8px;background:#263540;border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;background:var(--gold);border-radius:99px}.chart{height:150px;display:flex;align-items:end;gap:8px;padding:10px 2px 0}.chartcol{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:end;height:100%;gap:6px;min-width:0}.chartbar{width:100%;max-width:28px;background:var(--gold);border-radius:6px 6px 2px 2px;min-height:2px}.chartlabel{font-size:10px;color:var(--muted)}.empty{text-align:center;color:var(--muted);padding:22px 10px;font-size:13px}.hidden{display:none!important}.foot{position:fixed;bottom:0;left:0;right:0;background:#0d151dee;backdrop-filter:blur(15px);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center;z-index:4}.footin{width:min(760px,100%);display:flex;justify-content:space-around}.nav{background:none;border:0;color:var(--muted);font-size:11px;display:flex;flex-direction:column;align-items:center;gap:4px;padding:5px}.nav b{font-size:19px;font-weight:400}.nav.active{color:var(--gold)}.notice{font-size:11px;color:var(--muted);line-height:1.5;margin-top:14px}.topactions{display:flex;gap:8px;align-items:center}@media(max-width:420px){.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.balance{font-size:31px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+ <div class="brand"><div class="mark">F</div><div><strong>FINANCE</strong><small>PERSONAL FINANCE</small></div></div>
+ <div class="topactions"><button class="secondary" id="exportBtn" title="Exportar backup">Backup</button></div>
+</header>
+<section class="hero">
+ <div class="eyebrow">Patrimônio registrado</div><div class="balance" id="balance">R$ 0,00</div>
+ <div class="stats"><div class="stat"><span>Entradas do mês</span><b class="green" id="income">R$ 0,00</b></div><div class="stat"><span>Saídas do mês</span><b class="red" id="expense">R$ 0,00</b></div></div>
+</section>
+<div class="tabs" id="tabs">
+ <button class="tab active" data-tab="home">Visão geral</button><button class="tab" data-tab="transactions">Movimentações</button><button class="tab" data-tab="goals">Metas</button><button class="tab" data-tab="plans">Compras</button><button class="tab" data-tab="bills">Contas</button>
+</div>
+<main>
+<section id="home" class="page">
+ <div class="section"><div class="sectionhead"><h2>Resumo dos últimos 6 meses</h2><span class="eyebrow">Entradas</span></div><div class="card"><div class="chart" id="chart"></div><div class="notice">Gráfico calculado a partir das movimentações cadastradas.</div></div></div>
+ <div class="section"><div class="sectionhead"><h2>Movimentações recentes</h2><button class="secondary" data-goto="transactions">Ver todas</button></div><div class="list" id="recent"></div></div>
+ <div class="section"><div class="sectionhead"><h2>Próximas contas</h2><button class="secondary" data-goto="bills">Ver contas</button></div><div class="list" id="upcoming"></div></div>
+</section>
+<section id="transactions" class="page hidden">
+ <div class="sectionhead"><h2>Nova movimentação</h2></div>
+ <form class="card formgrid" id="txForm">
+  <div class="field"><label>Tipo</label><select id="txType"><option value="expense">Despesa</option><option value="income">Receita</option></select></div>
+  <div class="field"><label>Valor (R$)</label><input id="txAmount" type="number" min="0.01" step="0.01" placeholder="0,00" required></div>
+  <div class="field"><label>Descrição</label><input id="txDesc" maxlength="60" placeholder="Ex.: almoço" required></div>
+  <div class="field"><label>Categoria</label><select id="txCategory"><option>Alimentação</option><option>Transporte</option><option>Lazer</option><option>Estudos</option><option>Compras</option><option>Saúde</option><option>Casa</option><option>Salário / mesada</option><option>Presente</option><option>Outros</option></select></div>
+  <div class="field full"><label>Data</label><input id="txDate" type="date" required></div>
+  <div class="field full"><button class="primary">Adicionar movimentação</button></div>
+ </form>
+ <div class="sectionhead section"><h2>Histórico</h2><span class="eyebrow" id="txCount">0 registros</span></div><div class="list" id="txList"></div>
+</section>
+<section id="goals" class="page hidden">
+ <div class="sectionhead"><h2>Metas de economia</h2></div>
+ <form class="card formgrid" id="goalForm">
+  <div class="field full"><label>Nome da meta</label><input id="goalName" placeholder="Ex.: viagem" required maxlength="50"></div>
+  <div class="field"><label>Valor desejado (R$)</label><input id="goalTarget" type="number" min="0.01" step="0.01" required></div>
+  <div class="field"><label>Já guardado (R$)</label><input id="goalSaved" type="number" min="0" step="0.01" value="0"></div>
+  <div class="field full"><button class="primary">Criar meta</button></div>
+ </form>
+ <div class="section"><div class="list" id="goalList"></div></div>
+</section>
+<section id="plans" class="page hidden">
+ <div class="sectionhead"><h2>Planejamento de compras</h2></div>
+ <form class="card formgrid" id="planForm">
+  <div class="field full"><label>O que deseja comprar?</label><input id="planName" placeholder="Ex.: fone de ouvido" required maxlength="60"></div>
+  <div class="field"><label>Preço estimado (R$)</label><input id="planPrice" type="number" min="0.01" step="0.01" required></div>
+  <div class="field"><label>Quando pretende comprar?</label><input id="planDate" type="date"></div>
+  <div class="field full"><button class="primary">Adicionar planejamento</button></div>
+ </form>
+ <div class="section"><div class="list" id="planList"></div></div>
+</section>
+<section id="bills" class="page hidden">
+ <div class="sectionhead"><h2>Contas e pagamentos futuros</h2></div>
+ <form class="card formgrid" id="billForm">
+  <div class="field full"><label>Descrição da conta</label><input id="billName" placeholder="Ex.: mensalidade" required maxlength="60"></div>
+  <div class="field"><label>Valor (R$)</label><input id="billAmount" type="number" min="0.01" step="0.01" required></div>
+  <div class="field"><label>Vencimento</label><input id="billDate" type="date" required></div>
+  <div class="field full"><button class="primary">Adicionar conta</button></div>
+ </form>
+ <div class="section"><div class="list" id="billList"></div></div>
+</section>
+</main>
+<p class="notice">Seus dados ficam salvos neste navegador, neste aparelho. Use “Backup” regularmente para exportar uma cópia. Esta versão não acessa contas bancárias nem realiza pagamentos.</p>
+</div>
+<nav class="foot"><div class="footin"><button class="nav active" data-tab="home"><b>⌂</b>Início</button><button class="nav" data-tab="transactions"><b>↕</b>Movimentos</button><button class="nav" data-tab="goals"><b>◎</b>Metas</button><button class="nav" data-tab="plans"><b>◇</b>Compras</button><button class="nav" data-tab="bills"><b>▦</b>Contas</button></div></nav>
+<script>
+const KEY='finance_v1_data';
+const blank={tx:[],goals:[],plans:[],bills:[]};
+let data;try{data=JSON.parse(localStorage.getItem(KEY))||structuredClone(blank)}catch(e){data=structuredClone(blank)}
+const $=id=>document.getElementById(id);
+const money=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const today=()=>new Date().toISOString().slice(0,10);
+$('txDate').value=today();
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function empty(msg){return `<div class="empty">${msg}</div>`}
+function item(title,sub,amount,cls='',action=''){return `<div class="item"><div style="min-width:0"><div class="itemtitle">${esc(title)}</div><div class="itemsub">${esc(sub)}</div></div><div style="display:flex;align-items:center;gap:9px"><span class="amount ${cls}">${amount}</span>${action}</div></div>`}
+function removeBtn(type,id){return `<button class="danger" data-remove="${type}" data-id="${id}">Excluir</button>`}
+function render(){
+ const now=new Date(), month=now.toISOString().slice(0,7);
+ const balance=data.tx.reduce((s,t)=>s+(t.type==='income'?t.amount:-t.amount),0);
+ const inc=data.tx.filter(t=>t.type==='income'&&t.date.startsWith(month)).reduce((s,t)=>s+t.amount,0);
+ const out=data.tx.filter(t=>t.type==='expense'&&t.date.startsWith(month)).reduce((s,t)=>s+t.amount,0);
+ $('balance').textContent=money(balance);$('income').textContent=money(inc);$('expense').textContent=money(out);
+ const recent=[...data.tx].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,5);
+ $('recent').innerHTML=recent.length?recent.map(t=>item(t.desc,`${t.category} · ${t.date}`,`${t.type==='income'?'+':'−'} ${money(t.amount)}`,t.type==='income'?'green':'red')).join(''):empty('Ainda não há movimentações.');
+ const upcoming=data.bills.filter(b=>!b.paid).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,4);
+ $('upcoming').innerHTML=upcoming.length?upcoming.map(b=>item(b.name,`Vence em ${b.date}`,money(b.amount),'', '')).join(''):empty('Nenhuma conta pendente cadastrada.');
+ $('txCount').textContent=`${data.tx.length} registros`;
+ const txs=[...data.tx].sort((a,b)=>b.date.localeCompare(a.date));
+ $('txList').innerHTML=txs.length?txs.map(t=>item(t.desc,`${t.category} · ${t.date}`,`${t.type==='income'?'+':'−'} ${money(t.amount)}`,t.type==='income'?'green':'red',removeBtn('tx',t.id))).join(''):empty('Cadastre sua primeira receita ou despesa.');
+ $('goalList').innerHTML=data.goals.length?data.goals.map(g=>{let p=Math.min(100,g.saved/g.target*100);return `<div class="card"><div class="sectionhead"><b>${esc(g.name)}</b>${removeBtn('goals',g.id)}</div><div class="sectionhead"><span class="muted">${money(g.saved)} de ${money(g.target)}</span><b>${p.toFixed(0)}%</b></div><div class="bar"><i style="width:${p}%"></i></div><div class="field" style="margin-top:12px"><label>Adicionar ao valor guardado</label><div style="display:flex;gap:8px"><input type="number" min="0.01" step="0.01" id="add-${g.id}" placeholder="R$ 0,00"><button class="secondary" data-addgoal="${g.id}">Guardar</button></div></div></div>`}).join(''):empty('Crie uma meta para acompanhar seu progresso.');
+ $('planList').innerHTML=data.plans.length?data.plans.map(p=>item(p.name,p.date?`Planejado para ${p.date}`:'Sem data definida',money(p.price),'',removeBtn('plans',p.id))).join(''):empty('Adicione uma compra que deseja planejar.');
+ $('billList').innerHTML=data.bills.length?data.bills.sort((a,b)=>a.date.localeCompare(b.date)).map(b=>item(b.name,`${b.date} · ${b.paid?'Pago':'Pendente'}`,money(b.amount),b.paid?'green':'',`<button class="secondary" data-paid="${b.id}">${b.paid?'Desfazer':'Pagar'}</button> ${removeBtn('bills',b.id)}`)).join(''):empty('Nenhuma conta cadastrada.');
+ const months=[];for(let i=5;i>=0;i--){let d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push({key:d.toISOString().slice(0,7),label:d.toLocaleDateString('pt-BR',{month:'short'}).replace('.','')})}
+ const vals=months.map(m=>data.tx.filter(t=>t.type==='income'&&t.date.startsWith(m.key)).reduce((s,t)=>s+t.amount,0));
+ const max=Math.max(1,...vals);
+ $('chart').innerHTML=months.map((m,i)=>`<div class="chartcol"><div class="chartbar" style="height:${Math.max(3,vals[i]/max*100)}%"></div><div class="chartlabel">${m.label}</div></div>`).join('');
+}
+function switchTab(tab){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('hidden',p.id!==tab));document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.goto)));
+$('txForm').addEventListener('submit',e=>{e.preventDefault();const amount=Number($('txAmount').value);if(!(amount>0))return;data.tx.push({id:crypto.randomUUID(),type:$('txType').value,amount,desc:$('txDesc').value.trim(),category:$('txCategory').value,date:$('txDate').value});e.target.reset();$('txDate').value=today();save()});
+$('goalForm').addEventListener('submit',e=>{e.preventDefault();data.goals.push({id:crypto.randomUUID(),name:$('goalName').value.trim(),target:Number($('goalTarget').value),saved:Number($('goalSaved').value||0)});e.target.reset();save()});
+$('planForm').addEventListener('submit',e=>{e.preventDefault();data.plans.push({id:crypto.randomUUID(),name:$('planName').value.trim(),price:Number($('planPrice').value),date:$('planDate').value});e.target.reset();save()});
+$('billForm').addEventListener('submit',e=>{e.preventDefault();data.bills.push({id:crypto.randomUUID(),name:$('billName').value.trim(),amount:Number($('billAmount').value),date:$('billDate').value,paid:false});e.target.reset();save()});
+document.addEventListener('click',e=>{const r=e.target.closest('[data-remove]');if(r){const {remove,id}=r.dataset;data[remove]=data[remove].filter(x=>x.id!==id);save()}const p=e.target.closest('[data-paid]');if(p){let b=data.bills.find(x=>x.id===p.dataset.paid);if(b)b.paid=!b.paid;save()}const g=e.target.closest('[data-addgoal]');if(g){const input=$('add-'+g.dataset.addgoal),n=Number(input.value),goal=data.goals.find(x=>x.id===g.dataset.addgoal);if(goal&&n>0){goal.saved+=n;save()}}});
+$('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='finance-backup.json';a.click();URL.revokeObjectURL(a.href)});
+render();
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+</script>
+</body></html>

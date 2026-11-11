@@ -1,0 +1,9 @@
+{
+  "name": "FINANCE — Personal Finance",
+  "short_name": "FINANCE",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d151d",
+  "theme_color": "#101820",
+  "icons": []
+}
